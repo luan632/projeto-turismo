@@ -78,6 +78,12 @@ const addCustomMarkers = () => {
     { lat: -2.902957, lng: -41.768434, title: "Praça Mandu Ladino" },
     { lat: -2.910237, lng: -41.744985, title: "Restaurante Mangata" },
     { lat: -2.909734, lng: -41.746951, title: "Parnaíba Shopping" },
+    { lat: -2.900464, lng: -41.780282, title: "Museu do Mar" },
+    { lat: -2.816892, lng: -41.728505, title: "Praia Pedra do Sal" },
+    { lat: -2.929462, lng: -41.676876, title: "Lagoa do Portinho" },
+    { lat: -2.913962, lng: -41.753847, title: "Citi Executivo Hotel" },
+    { lat: -2.908528, lng: -41.752094, title: "Hotel Portal dos Ventos" },
+    { lat: -2.903851, lng: -41.754304, title: "Nautillus Hotel" },
   ];
 
   locations.forEach((location) => {
