@@ -37,7 +37,7 @@
     <v-main>
       <!-- Adicionando o mapa Leaflet -->
       <v-container fluid class="pa-0">
-        <Mapa1></Mapa1>
+      <Mapa1></Mapa1>
       </v-container>
     </v-main>
   </v-app>
@@ -48,7 +48,7 @@ import { ref } from 'vue'
 import debounce from 'lodash.debounce'
 
 
-import Mapa1 from '@/components/mapa[1].vue';
+import Mapa1 from '@/components/mapa1.vue';
 
 // Controle da navegação
 const drawer = ref(false)
