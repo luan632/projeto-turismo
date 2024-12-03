@@ -115,6 +115,6 @@ const toggleDrawer = () => {
 #map {
   height: 100vw;  /* Altura do mapa ajustada */
   width: 400%;    /* Largura do mapa ajustada */
-  border-radius: 8px;  /* Arredondar bordas para suavizar o visual */
+
 }
 </style>

@@ -136,7 +136,6 @@ const updateMarkerAndAddress = (lat, lng, address) => {
 .map-container {
   height: 600px;  /* Altura do mapa ajustada */
   width: 100%;    /* Largura do mapa ajustada */
-  border-radius: 8px;
 }
 
 .map-section {
