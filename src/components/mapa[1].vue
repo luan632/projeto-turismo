@@ -44,7 +44,7 @@ import L from "leaflet";
 const emit = defineEmits(["location-selected"]);
 
 const loadingLocation = ref(false);
-const map = ref(null);
+const map = ref(null)
 const currentMarker = ref(null);
 
 onMounted(() => {
@@ -69,7 +69,23 @@ onMounted(() => {
   });
 
   getCurrentLocation();
+  addCustomMarkers();
 });
+
+// Adicionar localizações personalizadas no mapa
+const addCustomMarkers = () => {
+  const locations = [
+    { lat: -2.902957, lng: -41.768434, title: "Praça Mandu Ladino" },
+    { lat: -2.910237, lng: -41.744985, title: "Restaurante Mangata" },
+    { lat: -2.909734, lng: -41.746951, title: "Parnaíba Shopping" },
+  ];
+
+  locations.forEach((location) => {
+    const { lat, lng, title } = location;
+    const marker = L.marker([lat, lng]).addTo(map.value);
+    marker.bindPopup(`<b>${title}</b>`); // Exibir título no popup
+  });
+};
 
 const getCurrentLocation = () => {
   loadingLocation.value = true;
@@ -130,6 +146,19 @@ const updateMarkerAndAddress = (lat, lng, address) => {
   emit("location-selected", { address, lat, lng });
   map.value.setView([lat, lng], 16);
 };
+// var teatroIcon = L.icon({
+//   iconUrl: '@/assets/teatro.png',
+
+//   iconSize:     [38, 95], // size of the icon
+
+//     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+
+//     popupAnchor:  [-3, -76]
+// })
+
+// // L.marker([51.5, -0.09], {icon: teatroIcon}).addTo(map).bindPopup("I am a green leaf.");
+// L.marker([51.5, -0.09], {icon: teatroIcon}).addTo(map);
+// var marcador = L.marker([-2.902957, -41.768434]).addTo(map).bindPopup("Praça Mandu Ladino")
 </script>
 
 <style scoped>
