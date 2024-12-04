@@ -95,7 +95,10 @@ onMounted(async () => {
 const fetchData = async () => {
   try {
     let { data, error } = await supabase.from("locais").select()
-    locations.splice(0, locations.length, ...data.filter(it => it.category === category.value))
+    let listfitered = data
+    if (category.value !== "")
+      listfitered = data.filter(it => it.category === category.value)
+    locations.splice(0, locations.length, ...listfitered)
   if(error){
     console.log(error)
   }
