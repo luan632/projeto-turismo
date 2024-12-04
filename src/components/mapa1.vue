@@ -41,6 +41,10 @@ import { ref, onMounted, defineEmits, reactive } from "vue";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import supabase from "@/Composables/supabase";
+import { useRoute } from 'vue-router';
+import { da } from "vuetify/locale";
+
+const route = useRoute();
 
 const emit = defineEmits(["location-selected"]);
 
@@ -58,8 +62,10 @@ const locations = reactive( [
     // { lat: -2.908528, lng: -41.752094, title: "Hotel Portal dos Ventos" },
     // { lat: -2.903851, lng: -41.754304, title: "Nautillus Hotel" },
   ])
-
+const category = ref("")
 onMounted(async () => {
+  category.value = route.path.replace("/", "")
+  
   delete L.Icon.Default.prototype._getIconUrl;
   L.Icon.Default.mergeOptions({
     iconRetinaUrl:
@@ -81,16 +87,15 @@ onMounted(async () => {
   });
 
   console.log(supabase)
-
-
+  await fetchData()
   getCurrentLocation();
   addCustomMarkers();
-  await fetchData()
 });
 
 const fetchData = async () => {
   try {
     let { data, error } = await supabase.from("locais").select()
+    locations.splice(0, locations.length, ...data.filter(it => it.category === category.value))
   if(error){
     console.log(error)
   }
@@ -103,8 +108,6 @@ const fetchData = async () => {
 
 // Adicionar localizações personalizadas no mapa
 const addCustomMarkers = () => {
-
-
   locations.forEach((location) => {
     const { lat, lng, title } = location;
     const marker = L.marker([lat, lng]).addTo(map.value);
