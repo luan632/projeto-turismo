@@ -4,15 +4,14 @@
     <v-navigation-drawer v-model="drawer">
       <v-list-item title="Menu Principal" class="text-center"></v-list-item>
       <v-divider></v-divider>
-
-      <v-list-item v-for="item in items" :key="item.text">
-        <router-link :to="item.to">
-          <v-list-item-content>
-            <v-icon v-if="item.icon">{{ item.icon }}</v-icon>
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
-          </v-list-item-content>
-        </router-link>
-      </v-list-item>
+      <router-link :to="item.to"  v-for="item in items" :key="item.text">
+        <v-list-item>
+            <v-list-item-content>
+              <v-icon v-if="item.icon">{{ item.icon }}</v-icon>
+              <v-list-item-title>{{ item.text }}</v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+      </router-link>
     </v-navigation-drawer>
 
     <!-- Barra de navegação superior -->
@@ -55,7 +54,7 @@ const drawer = ref(false)
 
 // Itens do menu com ícones e links
 const items = [
-  { text: "Pontos Turísticos", icon: "mdi-google-maps", to: "/map" },
+  { text: "Pontos Turísticos", icon: "mdi-google-maps", to: "/turismo" },
   { text: "Hotéis", icon: "mdi-bed", to: "/hoteis" },
   { text: "Roteiro", icon: "mdi-calendar", to: "/roteiro" },
   { text: "Restaurante", icon: "mdi-food", to: "restaurante" },
